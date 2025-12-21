@@ -1,0 +1,100 @@
+# LlamaIndex Professional Tutorial - Requirements
+# Python 3.12+
+# Latest LlamaIndex modular architecture
+
+# ============================================
+# CORE FRAMEWORK
+# ============================================
+llama-index-core
+
+# ============================================
+# LLM INTEGRATIONS
+# ============================================
+llama-index-llms-openai
+llama-index-llms-anthropic
+
+# ============================================
+# EMBEDDING INTEGRATIONS
+# ============================================
+llama-index-embeddings-openai
+llama-index-embeddings-huggingface
+
+# ============================================
+# VECTOR STORE INTEGRATIONS
+# ============================================
+llama-index-vector-stores-qdrant
+llama-index-vector-stores-chroma
+
+# ============================================
+# READER INTEGRATIONS
+# ============================================
+llama-index-readers-file
+
+# ============================================
+# POST-PROCESSORS (Reranking)
+# ============================================
+llama-index-postprocessor-cohere-rerank
+
+# ============================================
+# VECTOR DATABASE CLIENTS
+# ============================================
+qdrant-client
+chromadb
+
+# ============================================
+# EMBEDDING & NLP UTILITIES
+# ============================================
+sentence-transformers
+transformers
+torch
+
+# ============================================
+# DOCUMENT PROCESSING
+# ============================================
+pypdf
+beautifulsoup4
+lxml
+python-docx
+
+# ============================================
+# ENVIRONMENT & CONFIG
+# ============================================
+python-dotenv
+
+# ============================================
+# JUPYTER & NOTEBOOKS
+# ============================================
+jupyter
+notebook
+ipywidgets
+
+# ============================================
+# DATA SCIENCE & VISUALIZATION
+# ============================================
+matplotlib
+pandas
+numpy
+
+# ============================================
+# UTILITIES
+# ============================================
+tqdm
+requests
+
+# ============================================
+# OPTIONAL: For production monitoring
+# ============================================
+# prometheus-client
+# opentelemetry-api
+# opentelemetry-sdk
+
+# ============================================
+# NOTES:
+# ============================================
+# 1. This uses the new modular LlamaIndex architecture
+# 2. Avoids deprecated packages (QueryPipeline, ServiceContext)
+# 3. All packages are independently versioned
+# 4. Install with: pip install -r requirements.txt
+# 5. Requires OpenAI API key for OpenAI integrations
+# 6. Requires Anthropic API key for Anthropic integrations
+# 7. Requires Cohere API key for Cohere reranking
