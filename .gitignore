@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data files (keep directory structure, ignore contents)
+data/sample_docs/*
+!data/sample_docs/.gitkeep
+data/research_papers/*
+!data/research_papers/.gitkeep
+data/10k/
+
+# Vector stores and cache
+*.index
+storage/
+cache/
+
+# Logs
+*.log
+
+# Claude Code
+.claude/
+.superpowers/
+
+# Internal documentation (not for public repo)
+temp/

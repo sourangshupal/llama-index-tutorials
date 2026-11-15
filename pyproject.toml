@@ -1,0 +1,93 @@
+[project]
+name = "llama-index-tutorials"
+version = "0.2.0"
+description = "Hands-on LlamaIndex tutorials: from RAG fundamentals to production hybrid search and reranking"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Educational" }
+authors = [{ name = "Sourangshu Paul" }]
+
+# Runtime dependencies for the notebooks.
+# Mirrors requirements.txt; minimum versions reflect the Nov 2026 refresh
+# (llama-index-core 0.14.x, current-generation model APIs).
+dependencies = [
+    "llama-index>=0.14",
+    "llama-index-core>=0.14",
+    # LLM integrations
+    "llama-index-llms-openai>=0.6",
+    "llama-index-llms-anthropic>=0.10",
+    "llama-index-embeddings-bedrock>=0.7",
+    "llama-index-llms-bedrock-converse>=0.12",
+    # Embedding integrations
+    "llama-index-embeddings-openai>=0.5",
+    "llama-index-embeddings-huggingface>=0.6",
+    # Vector stores
+    "llama-index-vector-stores-qdrant>=0.9",
+    "llama-index-vector-stores-chroma>=0.5",
+    # Readers & postprocessors
+    "llama-index-readers-file>=0.5",
+    "llama-index-postprocessor-cohere-rerank>=0.5",
+    "cohere>=5.0",
+    # Vector DB clients (fastembed powers Qdrant BM25 hybrid search)
+    "qdrant-client>=1.10",
+    "chromadb>=1.0",
+    "fastembed>=0.2",
+    # NLP utilities
+    "sentence-transformers>=5.0",
+    "transformers>=4.45",
+    "torch>=2.4",
+    # Document processing
+    "pypdf>=5.0",
+    "beautifulsoup4>=4.12",
+    "lxml>=5.0",
+    "python-docx>=1.1",
+    # Config & AWS
+    "python-dotenv>=1.0",
+    "boto3>=1.35",
+    "nest-asyncio>=1.6",
+    # Data science
+    "matplotlib>=3.9",
+    "pandas>=2.2",
+    "numpy>=2.0",
+    "tqdm>=4.66",
+    "requests>=2.32",
+]
+
+[project.optional-dependencies]
+notebooks = [
+    "jupyter>=1.1",
+    "notebook>=7.0",
+    "ipywidgets>=8.0",
+]
+monitoring = [
+    "prometheus-client>=0.21",
+    "opentelemetry-api>=1.29",
+    "opentelemetry-sdk>=1.29",
+]
+
+# Development tooling (PEP 735)
+[dependency-groups]
+dev = [
+    "ruff>=0.8",
+    "nbstripout>=0.7",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+# Notebook-style code: imports mid-file and unused imports are common in tutorials
+ignore = ["E402", "F401"]
+
+[tool.nbstripout]
+# Strip execution outputs before committing notebooks
+strip_except = ["kernelspec", "language_info"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+# Tutorial repo: nothing to package
+py-modules = []

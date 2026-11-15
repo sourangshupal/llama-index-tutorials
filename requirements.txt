@@ -1,88 +1,93 @@
 # LlamaIndex Professional Tutorial - Requirements
 # Python 3.12+
-# Latest LlamaIndex modular architecture
+# Latest LlamaIndex modular architecture (Nov 2026 refresh)
+# Tested with llama-index-core 0.14.x
 
 # ============================================
 # CORE FRAMEWORK
 # ============================================
-llama-index
-llama-index-core
+llama-index>=0.14
+llama-index-core>=0.14
 
 # ============================================
 # LLM INTEGRATIONS
 # ============================================
-llama-index-llms-openai
-llama-index-llms-anthropic
-llama-index-embeddings-bedrock
-lama-index-llms-bedrock-converse
+llama-index-llms-openai>=0.6
+llama-index-llms-anthropic>=0.10
+llama-index-embeddings-bedrock>=0.7
+llama-index-llms-bedrock-converse>=0.12
 
 # ============================================
 # EMBEDDING INTEGRATIONS
 # ============================================
-llama-index-embeddings-openai
-llama-index-embeddings-huggingface
+llama-index-embeddings-openai>=0.5
+llama-index-embeddings-huggingface>=0.6
 
 # ============================================
 # VECTOR STORE INTEGRATIONS
 # ============================================
-llama-index-vector-stores-qdrant
-llama-index-vector-stores-chroma
+llama-index-vector-stores-qdrant>=0.9
+llama-index-vector-stores-chroma>=0.5
 
 # ============================================
 # READER INTEGRATIONS
 # ============================================
-llama-index-readers-file
+llama-index-readers-file>=0.5
 
 # ============================================
 # POST-PROCESSORS (Reranking)
 # ============================================
-llama-index-postprocessor-cohere-rerank
+llama-index-postprocessor-cohere-rerank>=0.5
+cohere>=5.0                # Cohere client (Notebook 5 reranking)
 
 # ============================================
 # VECTOR DATABASE CLIENTS
 # ============================================
-qdrant-client
-chromadb
+qdrant-client>=1.10
+chromadb>=1.0
+fastembed>=0.2            # Sparse/BM25 embeddings for Qdrant hybrid search (Notebook 5)
 
 # ============================================
 # EMBEDDING & NLP UTILITIES
 # ============================================
-sentence-transformers
-transformers
-torch
+sentence-transformers>=5.0
+transformers>=4.45
+torch>=2.4
 
 # ============================================
 # DOCUMENT PROCESSING
 # ============================================
-pypdf
-beautifulsoup4
-lxml
-python-docx
+pypdf>=5.0
+beautifulsoup4>=4.12
+lxml>=5.0
+python-docx>=1.1
 
 # ============================================
 # ENVIRONMENT & CONFIG
 # ============================================
-python-dotenv
+python-dotenv>=1.0
+boto3>=1.35               # AWS Bedrock (test_bedrock.py)
+nest-asyncio>=1.6         # Jupyter event-loop handling (evaluation notebook)
 
 # ============================================
 # JUPYTER & NOTEBOOKS
 # ============================================
-jupyter
-notebook
-ipywidgets
+jupyter>=1.1
+notebook>=7.0
+ipywidgets>=8.0
 
 # ============================================
 # DATA SCIENCE & VISUALIZATION
 # ============================================
-matplotlib
-pandas
-numpy
+matplotlib>=3.9
+pandas>=2.2
+numpy>=2.0
 
 # ============================================
 # UTILITIES
 # ============================================
-tqdm
-requests
+tqdm>=4.66
+requests>=2.32
 
 # ============================================
 # OPTIONAL: For production monitoring
@@ -94,10 +99,8 @@ requests
 # ============================================
 # NOTES:
 # ============================================
-# 1. This uses the new modular LlamaIndex architecture
+# 1. Uses the modular LlamaIndex architecture (llama-index-core + integrations)
 # 2. Avoids deprecated packages (QueryPipeline, ServiceContext)
-# 3. All packages are independently versioned
-# 4. Install with: pip install -r requirements.txt
-# 5. Requires OpenAI API key for OpenAI integrations
-# 6. Requires Anthropic API key for Anthropic integrations
-# 7. Requires Cohere API key for Cohere reranking
+# 3. Default models (Nov 2026): gpt-6.1-terra (workhorse), gpt-6.1-sol (quality)
+# 4. gpt-4o-mini shuts down 2027-01-14; gpt-3.5-turbo/gpt-4 shut down 2026-10-23
+# 5. Install with: pip install -r requirements.txt

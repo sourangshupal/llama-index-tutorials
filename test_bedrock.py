@@ -16,14 +16,17 @@ def test_bedrock_llm():
     print("=" * 60)
 
     try:
+        # Claude Sonnet 5.5 (global cross-region inference profile, GA on Bedrock
+        # since 2026-09-28). Verify availability in your account/region:
+        #   aws bedrock list-inference-profiles --region us-east-1
         llm = BedrockConverse(
-            model="global.anthropic.claude-sonnet-4-5-20250929-v1:0",
+            model="global.anthropic.claude-sonnet-5-5",
             region_name="us-east-1",
             temperature=0.1,
             max_tokens=10000,
         )
 
-        print("✓ BedrockConverse initialized successfully")
+        print("✓ BedrockConverse initialized successfully (claude-sonnet-5-5)")
         print("\nSending test prompt: 'What is AI in one sentence?'")
 
         response = llm.complete("What is AI in one sentence?")
@@ -89,7 +92,7 @@ def test_bedrock_rag():
     try:
         # Configure Settings
         Settings.llm = BedrockConverse(
-            model="global.anthropic.claude-sonnet-4-5-20250929-v1:0",
+            model="global.anthropic.claude-sonnet-5-5",
             region_name="us-east-1",
             temperature=0.1,
         )

@@ -17,6 +17,8 @@ def test_bedrock_llm():
     print("=" * 60)
 
     try:
+        # DeepSeek R1 via Bedrock marketplace (us-region profile). Verify in the
+        # AWS Bedrock Console > Model access before running.
         llm = BedrockConverse(
             model="us.deepseek.r1-v1:0",
             region_name="us-east-1",
@@ -24,7 +26,7 @@ def test_bedrock_llm():
             max_tokens=10000,
         )
 
-        print("✓ BedrockConverse initialized successfully")
+        print("✓ BedrockConverse initialized successfully (deepseek.r1)")
         print("\nSending test prompt: 'What is AI in one sentence?'")
 
         response = llm.complete("What is AI in one sentence?")
@@ -36,7 +38,7 @@ def test_bedrock_llm():
         print("Possible issues:")
         print("  - AWS_BEARER_TOKEN_BEDROCK not in .env file")
         print("  - Add your Bedrock API key to .env: AWS_BEARER_TOKEN_BEDROCK=your_token")
-        print("  - Bedrock API key may be expired (check expiration: Feb 01, 2026)")
+        print("  - Bedrock API key may be expired (check the expiration date in the AWS Console)")
         print("  - Model not enabled in AWS Bedrock Console")
         print("  - Incorrect region specified (default: us-east-1)")
         return False
@@ -79,7 +81,7 @@ def test_bedrock_embeddings():
         print("Possible issues:")
         print("  - AWS_BEARER_TOKEN_BEDROCK not in .env file")
         print("  - Add your Bedrock API key to .env: AWS_BEARER_TOKEN_BEDROCK=your_token")
-        print("  - Bedrock API key may be expired (check expiration: Feb 01, 2026)")
+        print("  - Bedrock API key may be expired (check the expiration date in the AWS Console)")
         print("  - Embedding model not enabled in AWS Bedrock Console")
         print("  - Incorrect model name or region")
         return False
@@ -155,7 +157,7 @@ def main():
     if bedrock_token:
         print(f"  ✓ Bedrock API Bearer Token found in .env")
         print(f"  Token (preview): {bedrock_token[:15]}...{bedrock_token[-10:]}")
-        print(f"  ⚠️  Token expires: February 01, 2026 (30 days)")
+        print(f"  ⚠️  Check the token's expiration date in the AWS Bedrock Console")
     else:
         print(f"  ✗ AWS_BEARER_TOKEN_BEDROCK not found in .env")
         print(f"\n  Please add your Bedrock API key to .env file:")
@@ -187,12 +189,12 @@ def main():
     if all_passed:
         print("🎉 ALL TESTS PASSED!")
         print("Your AWS Bedrock API Key authentication is working correctly.")
-        print("\nNote: Remember to regenerate the API key before it expires (Feb 01, 2026)")
+        print("\nNote: regenerate the API key before it expires (see AWS Bedrock Console)")
     else:
         print("⚠️  SOME TESTS FAILED")
         print("\nTroubleshooting:")
         print("1. Verify AWS_BEARER_TOKEN_BEDROCK is in .env file")
-        print("2. Check token hasn't expired (expires Feb 01, 2026)")
+        print("2. Check the token hasn't expired (AWS Bedrock Console > API keys)")
         print("3. Check Bedrock model access in AWS Console")
         print("4. Ensure you're in the correct region (us-east-1)")
         print("5. Install packages: pip install llama-index-llms-bedrock-converse llama-index-embeddings-bedrock boto3 python-dotenv")
